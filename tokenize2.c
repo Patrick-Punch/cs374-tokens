@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     fgets(line, sizeof(line), stdin);
 
     size_t str_length = strlen(line);
-    if (str_length > 0 && line[str_length - 1] == '\n')
+    if (line[str_length - 1] == '\n')
     {
         line[str_length - 1] = '\0';
     }

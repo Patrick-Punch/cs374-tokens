@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 int main(void)
 {
@@ -7,10 +8,13 @@ int main(void)
     char *tokens[128] = {0};
     char line[1024];
 
+    printf("prompt> ");
+    fflush(stdout);
+
     fgets(line, sizeof(line), stdin);
 
     size_t str_length = strlen(line);
-    if (line[str_length -1] == '\n')
+    if (line[str_length - 1] == '\n')
     {
         line[str_length - 1] = '\0';
     }
@@ -20,12 +24,13 @@ int main(void)
     token = strtok(line, " ");
 
     while (token != NULL)
-    {   
+    {
         tokens[index] = token;
         index++;
         token = strtok(NULL, " ");
     }
-    // Prints out the tokens
-    for (int i = 0; tokens[i] != NULL; i++)
-        printf("%d: %s\n", i, tokens[i]);
+    for (int i = 0; tokens[i] != NULL; i++){
+        execvp(tokens[i], tokens);
+        perror("error");
+    }
 }
