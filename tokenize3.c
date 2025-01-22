@@ -1,3 +1,9 @@
+/*
+Patrick Punch
+1/22/2025
+CS 374
+Winter 2025
+*/
 #include <stdio.h>
 #include <string.h>
 
